@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/The_Jamsil_1.ttf",
+      "sha1": "18c35dc30aec60ef8ed599d0188717a3d8e6d031"
+    },
+    {
+      "path": "assets/fonts/The_Jamsil_3.ttf",
+      "sha1": "9417cbc8e1ddef19bc4c7d530fa5e6fccc87670e"
+    },
+    {
+      "path": "assets/fonts/The_Jamsil_4.ttf",
+      "sha1": "90c9040f3399dba07f87d49d92b94f5bcc966ccb"
+    },
+    {
+      "path": "assets/fonts/The_Jamsil_5.ttf",
+      "sha1": "13f58b794092d927272979a5c20320b3c73f6ea3"
+    }
+  ]
+}
