@@ -72,7 +72,7 @@ const RenderItem = ({
           {welfare.servNm}
         </Text>
       </View>
-      <Text style={styles.TextSubTitle} numberOfLines={1}>
+      <Text style={styles.TextSubTitle} numberOfLines={2}>
         {location}
       </Text>
       <Text style={styles.TextContents} numberOfLines={3}>

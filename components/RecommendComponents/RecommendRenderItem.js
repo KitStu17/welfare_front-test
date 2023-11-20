@@ -10,7 +10,7 @@ import {styles} from '../../styles/MainPageStyle';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faBookmark as fullFaBookmark} from '@fortawesome/free-solid-svg-icons';
 import {faBookmark as emptyFaBookmark} from '@fortawesome/free-regular-svg-icons';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import bookmarkService from '../../service/BookmarkService';
 
 const RecommendRenderItem = ({
@@ -29,6 +29,8 @@ const RecommendRenderItem = ({
     //   Alert.alert(`Don't know how to open this URL: ${url}`);
     // }
   };
+
+  const [location, setLocation] = useState('');
 
   const fullBookmarkPress = welfareId => {
     const findBookmark = bookmarkList.find(
@@ -54,6 +56,14 @@ const RecommendRenderItem = ({
     }
   };
 
+  useEffect(() => {
+    setLocation(welfare.ctpvNm);
+    if (welfare.sggNm !== null) {
+      setLocation(welfare.ctpvNm + ' ' + welfare.sggNm);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <View style={styles.welFare}>
       <View style={{flexDirection: 'row'}}>
@@ -61,6 +71,9 @@ const RecommendRenderItem = ({
           {welfare.servNm}
         </Text>
       </View>
+      <Text style={styles.TextSubTitle} numberOfLines={2}>
+        {location}
+      </Text>
       <Text style={styles.TextContents} numberOfLines={3}>
         {welfare.servDgst}
       </Text>
