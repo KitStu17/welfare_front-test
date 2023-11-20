@@ -1,6 +1,7 @@
 import {Alert} from 'react-native';
 import axios from 'axios';
 import {BACKEND_URL} from '../global';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 class UserService {
   login = async (id, password) => {
@@ -15,6 +16,10 @@ class UserService {
           'Content-Type': 'application/json',
         },
       });
+      // 일반 웹 브라우저의 local storage역할
+      // 앱 실행 시마다 로그인이 하지 않도록 하기위해 사용
+      await AsyncStorage.setItem('ACCESS_TOKEN', response.data);
+
       return response.data;
     } catch (error) {
       console.log(error);
@@ -154,8 +159,9 @@ class UserService {
     }
   };
 
-  Logout = (navigation, setToken) => {
+  Logout = async (navigation, setToken) => {
     setToken(null);
+    AsyncStorage.removeItem('ACCESS_TOKEN');
     navigation.navigate('Home');
     Alert.alert('로그아웃 되었습니다.');
   };

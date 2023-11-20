@@ -19,6 +19,14 @@ export const styles = StyleSheet.create({
     fontFamily: 'The_Jamsil_5',
     color: 'black',
   },
+  TextSubTitle: {
+    marginTop: 5,
+    marginBottom: 5,
+    paddingLeft: 5,
+    fontSize: 16,
+    fontFamily: 'The_Jamsil_4',
+    color: '#888686',
+  },
   TextContents: {
     marginTop: 5,
     marginBottom: 5,

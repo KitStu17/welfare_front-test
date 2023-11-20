@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import LoginPage from './pages/LoginPage.js';
@@ -7,13 +7,31 @@ import EditUserPage from './pages/EditUserPage.js';
 import RecommendPage from './pages/RecommendPage';
 import BookmarkPage from './pages/BookmarkPage';
 import SignupPage from './pages/SignupPage.js';
-import { faBookmark, faHouse, faRightToBracket, faThumbsUp, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBookmark,
+  faHouse,
+  faRightToBracket,
+  faThumbsUp,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Tab = createBottomTabNavigator();
 
 const App = () => {
   const [token, setToken] = useState(null);
+
+  // 자동 로그인 기능 구현
+  useEffect(() => {
+    const tokenCheck = async () => {
+      const tokenValue = await AsyncStorage.getItem('ACCESS_TOKEN');
+      if (tokenValue != null) {
+        setToken(tokenValue);
+      }
+    };
+    tokenCheck();
+  }, []);
 
   return (
     <NavigationContainer>
